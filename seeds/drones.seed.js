@@ -1,6 +1,7 @@
 // ℹ️ package responsible to make the connection with mongodb
 // https://www.npmjs.com/package/mongoose
 const mongoose = require("mongoose");
+const router = express.Router();
 
 const Drone = require("../models/Drone.model");
 // ℹ️ Sets the MongoDB URI for our app to have access to it.
@@ -23,7 +24,7 @@ const fillDatabase = async () => {
       { name: "drone2", propellers: 6, maxSpeed: 60 },
       { name: "drone3", propellers: 8, maxSpeed: 70 },
     ];
-    Drone.create(drones);
+    await Drone.create(drones);
   } catch (err) {
     console.error("Error connecting to mongo: ", err);
   }

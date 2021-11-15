@@ -4,15 +4,15 @@ const Drone = require("../models/Drone.model");
 
 // require the Drone model here
 
-router.get("/drones", async (req, res, next) => {
+router.route("/drones").get(async (req, res, next) => {
   try {
-    let allDrones = await Drone.find()
-    res.render("/drones/list",allDrones)
-    console.log(allDrones)
-  } catch(err) {
-    console.log(err)
-  } 
-})
+    let allDrones = await Drone.find();
+    res.render("drones/list", { allDrones });
+    console.log(allDrones);
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 router.get("/drones/create", (req, res, next) => {
   // Iteration #3: Add a new drone
